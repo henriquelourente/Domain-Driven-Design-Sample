@@ -17,7 +17,7 @@ namespace SampleLibrary.Application.Tests.Author.CommandHandlers
         public CreateAuthorCommandHandlerTests()
         {
             _authorRepository = new Mock<IAuthorRepository>();
-            IValidator<CreateAuthorCommand> createAuthorCommandValidator =
+            var createAuthorCommandValidator =
                 new CreateAuthorCommandValidator(_authorRepository.Object);
 
             _createAuthorCommandHandler =

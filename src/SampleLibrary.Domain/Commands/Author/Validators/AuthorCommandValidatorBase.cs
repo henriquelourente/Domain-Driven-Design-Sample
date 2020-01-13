@@ -3,11 +3,11 @@ using SampleLibrary.Domain.Interfaces.Repositories;
 
 namespace SampleLibrary.Domain.Commands.Author.Validators
 {
-    public abstract class AuthorBaseCommandValidator<T>: AbstractValidator<T> where T : AuthorBaseCommand
+    public abstract class AuthorCommandValidatorBase<T>: AbstractValidator<T> where T : AuthorCommandBase
     {
         private readonly IAuthorRepository _authorRepository;
 
-        protected AuthorBaseCommandValidator(IAuthorRepository authorRepository)
+        protected AuthorCommandValidatorBase(IAuthorRepository authorRepository)
         {
             _authorRepository = authorRepository;
             ValidateNameIsUnique();

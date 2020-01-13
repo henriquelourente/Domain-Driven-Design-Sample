@@ -4,7 +4,7 @@ using SampleLibrary.Domain.Interfaces.Repositories;
 
 namespace SampleLibrary.Domain.Commands.Author.Validators
 {
-    public class UpdateAuthorCommandValidator : AuthorBaseCommandValidator<UpdateAuthorCommand>
+    public class UpdateAuthorCommandValidator : AuthorCommandValidatorBase<UpdateAuthorCommand>
     {
         public UpdateAuthorCommandValidator(IAuthorRepository authorRepository)
             : base(authorRepository)

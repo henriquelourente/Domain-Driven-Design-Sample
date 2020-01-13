@@ -2,7 +2,7 @@
 
 namespace SampleLibrary.Domain.Commands.Author.Validators
 {
-    public class CreateAuthorCommandValidator : AuthorBaseCommandValidator<CreateAuthorCommand>
+    public class CreateAuthorCommandValidator : AuthorCommandValidatorBase<CreateAuthorCommand>
     {
         public CreateAuthorCommandValidator(IAuthorRepository authorRepository)
             : base((authorRepository))

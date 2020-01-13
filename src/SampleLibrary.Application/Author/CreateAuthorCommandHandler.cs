@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using SampleLibrary.Application.Author.Mappers;
+using SampleLibrary.Application.AutoMapper;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Author;
 using SampleLibrary.Domain.Interfaces.Repositories;

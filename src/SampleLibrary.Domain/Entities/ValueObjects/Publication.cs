@@ -8,6 +8,11 @@
             Year = year;
         }
 
+        protected Publication()
+        {
+            
+        }
+        
         public int Edition { get; private set; }
         public int Year { get; private set; }
     }

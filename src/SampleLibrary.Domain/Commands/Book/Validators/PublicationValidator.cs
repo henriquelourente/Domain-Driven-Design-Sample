@@ -2,11 +2,11 @@
 using FluentValidation;
 using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
-namespace SampleLibrary.Domain.Tests.Entities.Validators.Validators
+namespace SampleLibrary.Domain.Commands.Book.Validators
 {
-    public class PublicationValidator : AbstractValidator<Publication>
+    public class PublicationCommandValidator : AbstractValidator<PublicationCommand>
     {
-        public PublicationValidator()
+        public PublicationCommandValidator()
         {
             ValidateYear();
             ValidateEdition();

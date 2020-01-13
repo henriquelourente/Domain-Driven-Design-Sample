@@ -12,4 +12,8 @@
     <ProjectReference Include="..\..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Validators" />
+  </ItemGroup>
+
 </Project>

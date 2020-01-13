@@ -12,6 +12,7 @@ namespace SampleLibrary.Infra.Data.Context
     {
         public DbSet<Author> Author { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
+        public DbSet<Book> Book { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

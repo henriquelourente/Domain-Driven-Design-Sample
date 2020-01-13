@@ -3,11 +3,11 @@ using SampleLibrary.Domain.Interfaces.Repositories;
 
 namespace SampleLibrary.Domain.Commands.Publisher.Validators
 {
-    public abstract class PublisherBaseCommandValidator<T>: AbstractValidator<T> where T : PublisherBaseCommand
+    public abstract class PublisherCommandValidatorBase<T>: AbstractValidator<T> where T : PublisherCommandBase
     {
         private readonly IPublisherRepository _publisherRepository;
 
-        protected PublisherBaseCommandValidator(IPublisherRepository publisherRepository)
+        protected PublisherCommandValidatorBase(IPublisherRepository publisherRepository)
         {
             _publisherRepository = publisherRepository;
             ValidateNameIsUnique();

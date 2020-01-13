@@ -6,7 +6,7 @@ using SampleLibrary.Domain.Tests.Entities.Validators.Entities;
 
 namespace SampleLibrary.Domain.Interfaces.Repositories
 {
-    public interface IPublisherRepository: IRepository<Publisher>
+    public interface IPublisherRepository : IRepository<Publisher>
     {
         Task<bool> Exists(string name);
         Task<IEnumerable<Publisher>> GetAll();

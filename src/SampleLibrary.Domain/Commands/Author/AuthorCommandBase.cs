@@ -2,7 +2,7 @@
 
 namespace SampleLibrary.Domain.Commands.Author
 {
-    public abstract class AuthorBaseCommand : Command
+    public abstract class AuthorCommandBase : Command
     {
         public string Name { get;  set; }
     }

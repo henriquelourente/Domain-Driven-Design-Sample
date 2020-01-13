@@ -2,7 +2,7 @@
 using SampleLibrary.Core.Commands;
 using SampleLibrary.Core.Entity;
 
-namespace SampleLibrary.Application.Author.Mappers
+namespace SampleLibrary.Application.AutoMapper
 {
     public static class Mapper<TEntity, TCommand>
         where TEntity : Entity

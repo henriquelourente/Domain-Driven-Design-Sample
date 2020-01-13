@@ -1,6 +1,6 @@
 ﻿namespace SampleLibrary.Domain.Commands.Author
 {
-    public class CreateAuthorCommand : AuthorBaseCommand
+    public class CreateAuthorCommand : AuthorCommandBase
     {
     }
 }

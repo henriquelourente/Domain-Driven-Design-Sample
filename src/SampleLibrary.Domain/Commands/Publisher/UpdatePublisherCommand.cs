@@ -2,7 +2,7 @@
 
 namespace SampleLibrary.Domain.Commands.Publisher
 {
-    public class UpdatePublisherCommand : PublisherBaseCommand
+    public class UpdatePublisherCommand : PublisherCommandBase
     {
         public Guid Id { get; set; }
     }
