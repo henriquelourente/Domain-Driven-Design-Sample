@@ -6,14 +6,14 @@ namespace SampleLibrary.Core.Interfaces
 {
     public interface IRepository<in T> : IDisposable where T : IEntity
     {
-        IUnitOfWork UnitOfWork { get; }
+        IUnityOfWork UnitOfWork { get; }
         Task<bool> Commit();
 
         void Add(T entity);
         void Update(T entity);
     }
 
-    public interface IUnitOfWork
+    public interface IUnityOfWork
     {
         Task<bool> Commit();
     }

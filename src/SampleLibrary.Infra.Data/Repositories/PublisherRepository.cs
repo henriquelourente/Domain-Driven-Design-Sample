@@ -11,7 +11,7 @@ namespace SampleLibrary.Infra.Data.Repositories
     public class PublisherRepository : IPublisherRepository
     {
         private readonly SampleLibraryContext _sampleLibraryContext;
-        public IUnitOfWork UnitOfWork => _sampleLibraryContext;
+        public IUnityOfWork UnitOfWork => _sampleLibraryContext;
 
         public PublisherRepository(SampleLibraryContext context)
         {

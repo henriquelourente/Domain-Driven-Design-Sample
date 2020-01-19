@@ -31,7 +31,7 @@ namespace SampleLibrary.Application.Tests.Author.CommandHandlers
             var author = new CreateAuthorCommand {Name = "Robert Cecil Martin"};
 
             //Act
-            _createAuthorCommandHandler.Handle(author);
+            var x = _createAuthorCommandHandler.Handle(author);
 
             //Assert
             _authorRepository.Verify(r => r.Add(It.IsAny<Domain.Entities.Author>()), Times.Once);

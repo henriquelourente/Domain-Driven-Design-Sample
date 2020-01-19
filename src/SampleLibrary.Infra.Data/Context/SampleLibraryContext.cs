@@ -8,7 +8,7 @@ using SampleLibrary.Domain.Entities;
 
 namespace SampleLibrary.Infra.Data.Context
 {
-    public class SampleLibraryContext: DbContext, IUnitOfWork
+    public class SampleLibraryContext: DbContext, IUnityOfWork
     {
         public DbSet<Author> Author { get; set; }
         public DbSet<Publisher> Publisher { get; set; }

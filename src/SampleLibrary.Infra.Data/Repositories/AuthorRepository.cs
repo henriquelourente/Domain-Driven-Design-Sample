@@ -11,7 +11,7 @@ namespace SampleLibrary.Infra.Data.Repositories
     public class AuthorRepository : IAuthorRepository
     {
         private readonly SampleLibraryContext _sampleLibraryContext;
-        public IUnitOfWork UnitOfWork => _sampleLibraryContext;
+        public IUnityOfWork UnitOfWork => _sampleLibraryContext;
 
         public AuthorRepository(SampleLibraryContext context)
         {

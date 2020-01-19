@@ -1,12 +1,13 @@
 ﻿using FluentValidation;
 using SampleLibrary.Application.AutoMapper;
+using SampleLibrary.Core.Commands;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Book;
 using SampleLibrary.Domain.Interfaces.Repositories;
 
 namespace SampleLibrary.Application.Book
 {
-    public class CreateBookCommandHandler : ICommandHandler<CreateBookCommand>
+    public class CreateBookCommandHandler : CommandHandlerBase, ICommandHandler<CreateBookCommand>
     {
         private readonly IValidator<CreateBookCommand> _createBookCommandValidaor;
         private readonly IBookRepository _bookRepository;
@@ -18,16 +19,18 @@ namespace SampleLibrary.Application.Book
             _bookRepository = bookRepository;
         }
 
-        public void Handle(CreateBookCommand command)
+        public Result Handle(CreateBookCommand command)
         {
-            var validationResult = _createBookCommandValidaor.Validate(command);
+            var validationResult = Validate(command, _createBookCommandValidaor);
 
-            if (!validationResult.IsValid)
-                return;
+            if (validationResult.IsValid)
+            {
+                var book = BookMapper.CommandToEntity(command);
+                _bookRepository.Add(book);
+                _bookRepository.Commit();
+            }
 
-            var book = BookMapper.CommandToEntity(command);
-            _bookRepository.Add(book);
-            _bookRepository.Commit();
+            return Return();
         }
     }
 }

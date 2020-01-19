@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using SampleLibrary.Application.Author;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Author;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
 namespace SampleLibrary.Api.Controllers
 {
@@ -37,15 +31,23 @@ namespace SampleLibrary.Api.Controllers
         [HttpPost]
         public IActionResult Post(CreateAuthorCommand command)
         {
-            _createAuthorCommandHandler.Handle(command);
-            return Ok(command);
+            var result =_createAuthorCommandHandler.Handle(command);
+
+            if (result.Success)
+                return Ok(command);
+
+            return BadRequest(result.Errors);
         }
 
         [HttpPut]
         public IActionResult Put(UpdateAuthorCommand command)
         {
-            _updateAuthorCommandHandler.Handle(command);
-            return Ok(command);
+            var result = _updateAuthorCommandHandler.Handle(command);
+            
+            if (result.Success)
+                return Ok(command);
+
+            return BadRequest(result.Errors);
         }
     }
 }

@@ -31,15 +31,23 @@ namespace SampleLibrary.Api.Controllers
         [HttpPost]
         public IActionResult Post(CreateBookCommand command)
         {
-            _createBookCommandHandler.Handle(command);
-            return Ok(command);
+            var result = _createBookCommandHandler.Handle(command);
+            
+            if (result.Success)
+                return Ok(command);
+
+            return BadRequest(result.Errors);
         }
 
         [HttpPut]
         public IActionResult Put(UpdateBookCommand command)
         {
-            _updateBookCommandHandler.Handle(command);
-            return Ok(command);
+            var result =_updateBookCommandHandler.Handle(command);
+          
+            if (result.Success)
+                return Ok(command);
+
+            return BadRequest(result.Errors);
         }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace SampleLibrary.Core.Interfaces
 {
-    public interface ICommandHandler<in T>  where T : Command
+    public interface ICommandHandler<in T>  where T : CommandBase
     {
-        void Handle(T command);
+        Result Handle(T command);
     }
 }

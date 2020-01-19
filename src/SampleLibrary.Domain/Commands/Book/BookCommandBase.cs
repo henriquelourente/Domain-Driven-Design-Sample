@@ -4,7 +4,7 @@ using SampleLibrary.Core.Commands;
 
 namespace SampleLibrary.Domain.Commands.Book
 {
-    public abstract class BookCommandBase : Command
+    public abstract class BookCommandBase : CommandBase
     {
         public string Title { get; set; }
         public PublicationCommand Publication { get; set; }

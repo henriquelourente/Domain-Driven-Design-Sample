@@ -1,12 +1,13 @@
 ﻿using FluentValidation;
 using SampleLibrary.Application.AutoMapper;
+using SampleLibrary.Core.Commands;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Publisher;
 using SampleLibrary.Domain.Interfaces.Repositories;
 
 namespace SampleLibrary.Application.Publisher
 {
-    public class CreatePublisherCommandHandler : ICommandHandler<CreatePublisherCommand>
+    public class CreatePublisherCommandHandler : CommandHandlerBase, ICommandHandler<CreatePublisherCommand>
     {
         private readonly IValidator<CreatePublisherCommand> _createPublisherCommandValidator;
         private readonly IPublisherRepository _publisherRepository;
@@ -18,16 +19,18 @@ namespace SampleLibrary.Application.Publisher
             _publisherRepository = publisherRepository;
         }
 
-        public void Handle(CreatePublisherCommand command)
+        public Result Handle(CreatePublisherCommand command)
         {
-            var validationResult = _createPublisherCommandValidator.Validate(command);
+            var validationResult = Validate(command, _createPublisherCommandValidator);
 
-            if (!validationResult.IsValid)
-                return;
+            if (validationResult.IsValid)
+            {
+                var publisher = Mapper<Domain.Entities.Publisher, CreatePublisherCommand>.CommandToEntity(command);
+                _publisherRepository.Add(publisher);
+                _publisherRepository.Commit();
+            }
 
-            var publisher = Mapper<Domain.Entities.Publisher, CreatePublisherCommand>.CommandToEntity(command);
-            _publisherRepository.Add(publisher);
-            _publisherRepository.Commit();
+            return Return();
         }
     }
 }

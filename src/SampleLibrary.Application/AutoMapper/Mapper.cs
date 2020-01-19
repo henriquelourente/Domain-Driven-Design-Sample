@@ -6,7 +6,7 @@ namespace SampleLibrary.Application.AutoMapper
 {
     public static class Mapper<TEntity, TCommand>
         where TEntity : Entity
-        where TCommand : Command
+        where TCommand : CommandBase
     {
         public static TEntity CommandToEntity(TCommand command)
         {
