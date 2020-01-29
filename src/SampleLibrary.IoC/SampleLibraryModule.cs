@@ -11,9 +11,9 @@ using SampleLibrary.Domain.Commands.Book.Validators;
 using SampleLibrary.Domain.Commands.Publisher;
 using SampleLibrary.Domain.Commands.Publisher.Validators;
 using SampleLibrary.Domain.Interfaces.Repositories;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 using SampleLibrary.Infra.Data.Context;
 using SampleLibrary.Infra.Data.Repositories;
+using SampleLibrary.Infra.Messaging;
 
 namespace SampleLibrary.IoC
 {
@@ -52,6 +52,10 @@ namespace SampleLibrary.IoC
             services.AddScoped<IAuthorQueries, AuthorQueries>();
             services.AddScoped<IPublisherQueries, PublisherQueries>();
             services.AddScoped<IBookQueries, BookQueries>();
+
+            //messaging
+            services.AddScoped<IEventPublisher, EventPublisher>();
+
         }
     }
 }

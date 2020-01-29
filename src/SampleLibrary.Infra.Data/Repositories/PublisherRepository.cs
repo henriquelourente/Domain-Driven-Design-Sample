@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SampleLibrary.Core.Interfaces;
@@ -40,7 +41,7 @@ namespace SampleLibrary.Infra.Data.Repositories
 
         public void Dispose()
         {
-            _sampleLibraryContext?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public Task<bool> Commit()

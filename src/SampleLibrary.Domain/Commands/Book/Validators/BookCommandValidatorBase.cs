@@ -1,7 +1,6 @@
 ﻿using System;
 using FluentValidation;
 using SampleLibrary.Domain.Interfaces.Repositories;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
 namespace SampleLibrary.Domain.Commands.Book.Validators
 {
@@ -15,17 +14,16 @@ namespace SampleLibrary.Domain.Commands.Book.Validators
             _bookRepository = bookRepository;
             _publicationValidator = publicationValidator;
 
-            ValidateNameIsUnique();
             ValidateTitle();
             ValidateAuthor();
             ValidatePublisher();
             ValidatePublication();
         }
 
-        private void ValidateNameIsUnique()
+        protected void ValidateNameIsUniqueOnCreate()
         {
             RuleFor(bookBaseCommand => bookBaseCommand.Title)
-                .MustAsync(async (title, cancellationToken) => !(await _bookRepository.Exists(title)))
+                .MustAsync(async (title, cancellationToken) => !(await _bookRepository.ExistsAsync(title)))
                 .WithSeverity(Severity.Error)
                 .WithMessage("A book with this name already exists.");
         }

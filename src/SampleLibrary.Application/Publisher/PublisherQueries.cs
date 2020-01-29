@@ -13,14 +13,14 @@ namespace SampleLibrary.Application.Publisher
             _publisherRepository = publisherRepository;
         }
 
-        public Task<IEnumerable<Domain.Entities.Publisher>> GetAll()
+        public async Task<IEnumerable<Domain.Entities.Publisher>> GetAllAsync()
         {
-            return _publisherRepository.GetAll();
+            return await _publisherRepository.GetAll();
         }
     }
 
     public interface IPublisherQueries
     {
-        Task<IEnumerable<Domain.Entities.Publisher>> GetAll();
+        Task<IEnumerable<Domain.Entities.Publisher>> GetAllAsync();
     }
 }

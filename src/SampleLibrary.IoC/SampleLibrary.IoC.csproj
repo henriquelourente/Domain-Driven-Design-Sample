@@ -13,6 +13,7 @@
       <ProjectReference Include="..\SampleLibrary.Application\SampleLibrary.Application.csproj" />
       <ProjectReference Include="..\SampleLibrary.Domain\SampleLibrary.Domain.csproj" />
       <ProjectReference Include="..\SampleLibrary.Infra.Data\SampleLibrary.Infra.Data.csproj" />
+      <ProjectReference Include="..\SampleLibrary.Infra.Messaging\SampleLibrary.Infra.Messaging.csproj" />
     </ItemGroup>
 
 </Project>

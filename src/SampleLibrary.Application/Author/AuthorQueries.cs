@@ -13,14 +13,14 @@ namespace SampleLibrary.Application.Author
             _authorRepository = authorRepository;
         }
 
-        public Task<IEnumerable<Domain.Entities.Author>> GetAll()
+        public async Task<IEnumerable<Domain.Entities.Author>> GetAllAsync()
         {
-            return _authorRepository.GetAll();
+            return await _authorRepository.GetAll();
         }
     }
 
     public interface IAuthorQueries
     {
-        Task<IEnumerable<Domain.Entities.Author>> GetAll();
+        Task<IEnumerable<Domain.Entities.Author>> GetAllAsync();
     }
 }

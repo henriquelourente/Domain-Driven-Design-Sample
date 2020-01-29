@@ -25,7 +25,7 @@ namespace SampleLibrary.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_bookQueries.GetAll().Result);
+            return Ok(_bookQueries.GetAllAsync().Result);
         }
 
         [HttpPost]

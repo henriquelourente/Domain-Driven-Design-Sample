@@ -29,7 +29,7 @@ namespace SampleLibrary.Application.Book
                 _bookRepository.Update(book);
                 _bookRepository.Commit();
             }
-            return  Return();
+            return Return();
         }
     }
 }

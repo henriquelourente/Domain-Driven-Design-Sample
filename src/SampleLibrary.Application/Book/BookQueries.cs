@@ -13,14 +13,14 @@ namespace SampleLibrary.Application.Book
             _bookRepository = bookRepository;
         }
 
-        public Task<IEnumerable<Domain.Entities.Book>> GetAll()
+        public async Task<IEnumerable<Domain.Entities.Book>> GetAllAsync()
         {
-            return _bookRepository.GetAll();
+            return await _bookRepository.GetAllAsync();
         }
     }
 
     public interface IBookQueries
     {
-        Task<IEnumerable<Domain.Entities.Book>> GetAll();
+        Task<IEnumerable<Domain.Entities.Book>> GetAllAsync();
     }
 }

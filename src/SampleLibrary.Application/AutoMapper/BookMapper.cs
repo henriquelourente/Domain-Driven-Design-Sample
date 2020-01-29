@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
-using SampleLibrary.Domain.Commands.Author;
+using SampleLibrary.Application.Author;
+using SampleLibrary.Application.Book;
+using SampleLibrary.Application.Publisher;
 using SampleLibrary.Domain.Commands.Book;
 using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
@@ -29,6 +31,19 @@ namespace SampleLibrary.Application.AutoMapper
 
             var mapper = config.CreateMapper();
             return mapper.Map<Domain.Entities.Book>(command);
+        }
+
+        public static BookEvent EntityToEvent(Domain.Entities.Book entity)
+        {
+            var config = new MapperConfiguration(configure =>
+            {
+                configure.CreateMap<Domain.Entities.Author, AuthorEvent>();
+                configure.CreateMap<Domain.Entities.Publisher, PublisherEvent>();
+                configure.CreateMap<Domain.Entities.Book, BookEvent>();
+            });
+
+            var mapper = config.CreateMapper();
+            return mapper.Map<BookEvent>(entity);
         }
     }
 }

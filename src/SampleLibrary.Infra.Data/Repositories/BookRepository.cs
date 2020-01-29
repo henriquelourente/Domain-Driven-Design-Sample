@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SampleLibrary.Core.Interfaces;
@@ -28,19 +29,29 @@ namespace SampleLibrary.Infra.Data.Repositories
             _sampleLibraryContext.Book.Update(entity);
         }
 
-        public async Task<bool> Exists(string name)
+        public async Task<bool> ExistsAsync(string title)
         {
-            return await _sampleLibraryContext.Book.AnyAsync(b => b.Title.Equals(name));
+            return await _sampleLibraryContext.Book.AnyAsync(b => b.Title.Equals(title));
         }
 
-        public async Task<IEnumerable<Book>> GetAll()
+        public async Task<IEnumerable<Book>> GetAllAsync()
         {
             return await _sampleLibraryContext.Book.AsNoTracking().ToListAsync();
         }
 
+        public async Task<Book> GetByIdAsync(Guid id)
+        {
+            return await _sampleLibraryContext.Book
+                .AsNoTracking()
+                .Include(b => b.Publisher)
+                .Include(b => b.Publication)
+                .Include(b => b.Author)
+                .FirstOrDefaultAsync(b => b.Id == id);
+        }
+
         public void Dispose()
         {
-            _sampleLibraryContext?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public Task<bool> Commit()
