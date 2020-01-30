@@ -22,7 +22,7 @@ namespace SampleLibrary.IoC
         public void Register(IServiceCollection services)
         {
             //data
-            services.AddScoped<SampleLibraryContext>();
+            services.AddTransient<SampleLibraryContext>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IBookRepository, BookRepository>();

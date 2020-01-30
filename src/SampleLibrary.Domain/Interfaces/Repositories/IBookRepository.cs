@@ -10,6 +10,6 @@ namespace SampleLibrary.Domain.Interfaces.Repositories
     {
         Task<bool> ExistsAsync(string title);
         Task<IEnumerable<Book>> GetAllAsync();
-        Task<Book> GetByIdAsync(Guid id);
+        Book GetById(Guid id);
     }
 }

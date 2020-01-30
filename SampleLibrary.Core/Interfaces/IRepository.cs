@@ -7,8 +7,8 @@ namespace SampleLibrary.Core.Interfaces
     public interface IRepository<in T> : IDisposable where T : IEntity
     {
         IUnityOfWork UnitOfWork { get; }
-        Task<bool> Commit();
 
+        Task<bool> Commit();
         void Add(T entity);
         void Update(T entity);
     }

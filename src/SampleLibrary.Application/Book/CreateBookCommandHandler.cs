@@ -34,7 +34,7 @@ namespace SampleLibrary.Application.Book
                 _bookRepository.Add(book);
                 _bookRepository.Commit();
 
-                var newBook = _bookRepository.GetByIdAsync(book.Id).Result;
+                var newBook = _bookRepository.GetById(book.Id);
                 _eventPublisher.Publish(BookMapper.EntityToEvent(newBook));
             }
 
