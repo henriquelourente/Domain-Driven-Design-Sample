@@ -1,11 +1,10 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
 using SampleLibrary.Application.AutoMapper;
 using SampleLibrary.Core.Commands;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Book;
 using SampleLibrary.Domain.Interfaces.Repositories;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
+using SampleLibrary.Domain.Events;
 
 namespace SampleLibrary.Application.Book
 {
@@ -13,11 +12,11 @@ namespace SampleLibrary.Application.Book
     {
         private readonly IValidator<CreateBookCommand> _createBookCommandValidaor;
         private readonly IBookRepository _bookRepository;
-        private readonly IEventPublisher _eventPublisher;
+        private readonly IEventPublisher<BookEvent> _eventPublisher;
 
         public CreateBookCommandHandler(IValidator<CreateBookCommand> bookCommandValidaor,
             IBookRepository bookRepository,
-            IEventPublisher eventPublisher)
+            IEventPublisher<BookEvent> eventPublisher)
         {
             _createBookCommandValidaor = bookCommandValidaor;
             _bookRepository = bookRepository;

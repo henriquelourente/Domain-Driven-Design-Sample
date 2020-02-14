@@ -2,18 +2,7 @@
 {
     public class Publication
     {
-        public Publication(int edition, int year)
-        {
-            Edition = edition;
-            Year = year;
-        }
-
-        protected Publication()
-        {
-            
-        }
-        
-        public int Edition { get; private set; }
-        public int Year { get; private set; }
+        public int Edition { get;  set; }
+        public int Year { get;  set; }
     }
 }

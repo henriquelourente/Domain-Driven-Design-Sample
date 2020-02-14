@@ -3,9 +3,9 @@ using SampleLibrary.Core.Interfaces;
 
 namespace SampleLibrary.Infra.Messaging
 {
-    public class EventPublisher : IEventPublisher
+    public class EventPublisher<TMessage> : IEventPublisher<TMessage> where TMessage : class
     {
-        public void Publish(Core.Interfaces.IMessage message)
+        public void Publish(TMessage message)
         {
             using (var bus = RabbitHutch.CreateBus("host=localhost;virtualhost=sample-library;username=guest;password=guest"))
             {

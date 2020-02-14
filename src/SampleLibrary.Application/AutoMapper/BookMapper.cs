@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using SampleLibrary.Application.Author;
-using SampleLibrary.Application.Book;
-using SampleLibrary.Application.Publisher;
 using SampleLibrary.Domain.Commands.Book;
+using SampleLibrary.Domain.Events;
 using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
 namespace SampleLibrary.Application.AutoMapper

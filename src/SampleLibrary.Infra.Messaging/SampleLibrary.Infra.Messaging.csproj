@@ -6,10 +6,16 @@
 
     <ItemGroup>
       <PackageReference Include="EasyNetQ" Version="3.7.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
+      <ProjectReference Include="..\SampleLibrary.Domain\SampleLibrary.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="RabbitMQ\" />
     </ItemGroup>
 
 </Project>
