@@ -31,7 +31,7 @@ namespace SampleLibrary.Application.Book
             {
                 var book = BookMapper.CommandToEntity(command);
                 _bookRepository.Add(book);
-                _bookRepository.Commit();
+                _bookRepository.SaveChanges();
 
                 var newBook = _bookRepository.GetById(book.Id);
                 _eventPublisher.Publish(BookMapper.EntityToEvent(newBook));

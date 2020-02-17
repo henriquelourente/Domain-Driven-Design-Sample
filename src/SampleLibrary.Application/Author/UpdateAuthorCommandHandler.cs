@@ -26,7 +26,7 @@ namespace SampleLibrary.Application.Author
             {
                 var author = Mapper<Domain.Entities.Author, UpdateAuthorCommand>.CommandToEntity(command);
                 _authorRepository.Update(author);
-                _authorRepository.Commit();
+                _authorRepository.SaveChanges();
             }
 
             return Return();

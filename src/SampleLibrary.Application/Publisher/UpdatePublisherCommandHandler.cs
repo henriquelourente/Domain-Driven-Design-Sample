@@ -27,7 +27,7 @@ namespace SampleLibrary.Application.Publisher
             {
                 var publisher = Mapper<Domain.Entities.Publisher, UpdatePublisherCommand>.CommandToEntity(command);
                 _publisherRepository.Update(publisher);
-                _publisherRepository.Commit();
+                _publisherRepository.SaveChanges();
             }
 
             return Return();

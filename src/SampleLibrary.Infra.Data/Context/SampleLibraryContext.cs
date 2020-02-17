@@ -8,7 +8,7 @@ using SampleLibrary.Domain.Entities;
 
 namespace SampleLibrary.Infra.Data.Context
 {
-    public class SampleLibraryContext: DbContext, IUnityOfWork
+    public class SampleLibraryContext: DbContext
     {
         public DbSet<Author> Author { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
@@ -45,25 +45,6 @@ namespace SampleLibrary.Infra.Data.Context
             }
 
             return base.SaveChangesAsync(cancellationToken);
-        }
-
-        public async Task<bool> Commit()
-        {
-            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Created") != null))
-            {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Property("Created").CurrentValue = DateTime.Now;
-                }
-                
-                if (entry.State == EntityState.Modified)
-                {
-                    entry.Property("Created").IsModified = false;
-                    entry.Property("Updated").CurrentValue = DateTime.Now;
-                }
-            }
-            
-            return await base.SaveChangesAsync() > 0;
         }
     }
 }
