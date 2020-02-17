@@ -25,6 +25,6 @@ namespace SampleLibrary.Infra.Messaging
 
         public virtual void Unsubscribe() =>_bus.Dispose();
 
-        protected virtual void HandleMessage(TMessage message) => _elasticsearchRepository.AddAsync(message).Wait();
+        protected virtual void HandleMessage(TMessage message) => _elasticsearchRepository.AddOrUpdateAsync(message).Wait();
     }
 }
