@@ -16,6 +16,12 @@ namespace SampleLibrary.Infra.Data.Repositories
         {
         }
 
+        public void Delete(Guid id)
+        {
+            var entity = _sampleLibraryContext.Book.FirstOrDefault(b => b.Id == id);
+            _sampleLibraryContext.Book.Remove(entity);
+        }
+
         public async Task<bool> ExistsAsync(string title)
         {
             return await _sampleLibraryContext.Book.AnyAsync(b => b.Title.Equals(title));

@@ -31,7 +31,7 @@ namespace SampleLibrary.Core.Interfaces
     {
         TMessage GetById(TPrimaryKey id);
         Task<TMessage> GetByIdAsync(TPrimaryKey id);
-        IEnumerable<TMessage> GetAll();
+        Task<IEnumerable<TMessage>> GetAllAsync();
 
     }
 }

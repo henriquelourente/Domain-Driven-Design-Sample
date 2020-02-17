@@ -32,7 +32,7 @@ namespace SampleLibrary.Infra.Data.Repositories.Elasticsearch
 
         public async Task<TDocument> AddOrUpdateAsync(TDocument entity) => await IndexAsync(entity);
 
-        public IEnumerable<TDocument> GetAll() => Get();
+        public Task<IEnumerable<TDocument>> GetAllAsync() => Get();
 
         public TDocument GetById(TPrimaryKey id)
         {
@@ -105,11 +105,11 @@ namespace SampleLibrary.Infra.Data.Repositories.Elasticsearch
             return entity;
         }
 
-        private IEnumerable<TDocument> Get()
+        private async Task<IEnumerable<TDocument>> Get()
         {
-            var query = _context
+            var query = await _context
                 .GetClient()
-                .Search<TDocument>(idx => idx
+                .SearchAsync<TDocument>(idx => idx
                     .Index(IndexName)
                     .Size(1000)
                 );

@@ -11,5 +11,6 @@ namespace SampleLibrary.Domain.Interfaces.Repositories
         Task<bool> ExistsAsync(string title);
         Task<IEnumerable<Book>> GetAllAsync();
         Book GetById(Guid id);
+        void Delete(Guid id);
     }
 }

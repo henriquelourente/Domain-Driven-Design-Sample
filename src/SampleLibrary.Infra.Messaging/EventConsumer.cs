@@ -20,7 +20,7 @@ namespace SampleLibrary.Infra.Messaging
         public virtual void Subscribe()
         {
             _bus = RabbitHutch.CreateBus("host=localhost;virtualhost=sample-library;username=guest;password=guest");
-            _bus.Subscribe<TMessage>("Books", HandleMessage);
+            _bus.Subscribe<TMessage>(nameof(TMessage), HandleMessage);
         }
 
         public virtual void Unsubscribe() =>_bus.Dispose();

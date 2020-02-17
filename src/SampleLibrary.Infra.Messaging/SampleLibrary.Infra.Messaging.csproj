@@ -14,8 +14,4 @@
       <ProjectReference Include="..\SampleLibrary.Domain\SampleLibrary.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="RabbitMQ\" />
-    </ItemGroup>
-
 </Project>

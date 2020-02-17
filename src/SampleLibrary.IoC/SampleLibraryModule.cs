@@ -44,6 +44,7 @@ namespace SampleLibrary.IoC
 
             services.AddScoped<IValidator<CreateBookCommand>, CreateBookCommandValidator>();
             services.AddScoped<IValidator<UpdateBookCommand>, UpdateBookCommandValidator>();
+            services.AddScoped<IValidator<DeleteBookCommand>, DeleteBookCommandValidator>();
             services.AddScoped<IValidator<PublicationCommand>, PublicationCommandValidator>();
 
             //commandHandlers
@@ -55,6 +56,7 @@ namespace SampleLibrary.IoC
 
             services.AddScoped<ICommandHandler<CreateBookCommand>, CreateBookCommandHandler>();
             services.AddScoped<ICommandHandler<UpdateBookCommand>, UpdateBookCommandHandler>();
+            services.AddScoped<ICommandHandler<DeleteBookCommand>, DeleteBookCommandHandler>();
 
             //queries
             services.AddScoped<IAuthorQueries, AuthorQueries>();
@@ -63,7 +65,9 @@ namespace SampleLibrary.IoC
 
             //messaging
             services.AddScoped<IEventPublisher<BookEvent>, EventPublisher<BookEvent>>();
+            services.AddScoped<IEventPublisher<DeleteBookEvent>, EventPublisher<DeleteBookEvent>>();
             services.AddTransient<IEventConsumer<BookEvent, Guid>, BookEventConsumer>();
+            services.AddTransient<IEventConsumer<DeleteBookEvent, Guid>, DeleteBookEventConsumer>();
             services.AddScoped<IConsumerSubscriptions, ConsumerSubscriptions>();
 
             //elasticsearch

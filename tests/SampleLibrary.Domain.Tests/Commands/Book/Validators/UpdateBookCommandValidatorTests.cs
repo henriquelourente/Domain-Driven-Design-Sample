@@ -8,14 +8,14 @@ using Xunit;
 
 namespace SampleLibrary.Domain.Tests.Commands.Book.Validators
 {
-      public class UpdateBookCommandValidatorTests
+    public class UpdateBookCommandValidatorTests
     {
         private readonly UpdateBookCommandValidator _updateBookCommandValidator;
         private readonly PublicationCommand _publication;
 
         public UpdateBookCommandValidatorTests()
         {
-            _publication = new PublicationCommand {Edition = 1, Year = DateTime.Today.Year};
+            _publication = new PublicationCommand { Edition = 1, Year = DateTime.Today.Year };
 
             var bookRepository = new Mock<IBookRepository>();
             var publicationValidator = new PublicationCommandValidator();
@@ -32,7 +32,11 @@ namespace SampleLibrary.Domain.Tests.Commands.Book.Validators
             //Arrange
             var updateBookCommand = new UpdateBookCommand
             {
-                Id = Guid.NewGuid(), Title = title, Publication = _publication, AuthorId = Guid.NewGuid(), PublisherId = Guid.NewGuid()
+                Id = Guid.NewGuid(),
+                Title = title,
+                Publication = _publication,
+                AuthorId = Guid.NewGuid(),
+                PublisherId = Guid.NewGuid()
             };
 
             //Act
@@ -46,10 +50,14 @@ namespace SampleLibrary.Domain.Tests.Commands.Book.Validators
         public void Publication_Must_Be_Valid()
         {
             //Arrange
-            var publication = new PublicationCommand {Edition = 0, Year = DateTime.Today.Year};
+            var publication = new PublicationCommand { Edition = 0, Year = DateTime.Today.Year };
             var updateBookCommand = new UpdateBookCommand
             {
-                Id = Guid.NewGuid(), Title = "Clean Code", Publication = publication, AuthorId = Guid.NewGuid(), PublisherId = Guid.NewGuid()
+                Id = Guid.NewGuid(),
+                Title = "Clean Code",
+                Publication = publication,
+                AuthorId = Guid.NewGuid(),
+                PublisherId = Guid.NewGuid()
             };
 
             //Act
@@ -65,7 +73,11 @@ namespace SampleLibrary.Domain.Tests.Commands.Book.Validators
             //Arrange
             var updateBookCommand = new UpdateBookCommand
             {
-                Id = Guid.NewGuid(), Title = "Clean Code", Publication = _publication, AuthorId = Guid.Empty, PublisherId = Guid.NewGuid()
+                Id = Guid.NewGuid(),
+                Title = "Clean Code",
+                Publication = _publication,
+                AuthorId = Guid.Empty,
+                PublisherId = Guid.NewGuid()
             };
 
             //Act
@@ -81,7 +93,11 @@ namespace SampleLibrary.Domain.Tests.Commands.Book.Validators
             //Arrange
             var updateBookCommand = new UpdateBookCommand
             {
-                Id = Guid.NewGuid(), Title = "Clean Code", Publication = _publication, AuthorId = Guid.NewGuid(), PublisherId = Guid.Empty
+                Id = Guid.NewGuid(),
+                Title = "Clean Code",
+                Publication = _publication,
+                AuthorId = Guid.NewGuid(),
+                PublisherId = Guid.Empty
             };
 
             //Act

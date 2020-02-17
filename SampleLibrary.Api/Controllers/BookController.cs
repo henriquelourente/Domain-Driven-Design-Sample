@@ -11,14 +11,17 @@ namespace SampleLibrary.Api.Controllers
     {
         private readonly ICommandHandler<CreateBookCommand> _createBookCommandHandler;
         private readonly ICommandHandler<UpdateBookCommand> _updateBookCommandHandler;
+        private readonly ICommandHandler<DeleteBookCommand> _deleteBookCommandHandler;
         private readonly IBookQueries _bookQueries;
 
         public BookController(ICommandHandler<CreateBookCommand> createBookCommandHandler,
             ICommandHandler<UpdateBookCommand> updateBookCommandHandler,
+            ICommandHandler<DeleteBookCommand> deleteBookCommandHandler,
             IBookQueries bookQueries)
         {
             _createBookCommandHandler = createBookCommandHandler;
             _updateBookCommandHandler = updateBookCommandHandler;
+            _deleteBookCommandHandler = deleteBookCommandHandler;
             _bookQueries = bookQueries;
         }
 
@@ -44,6 +47,17 @@ namespace SampleLibrary.Api.Controllers
         {
             var result =_updateBookCommandHandler.Handle(command);
           
+            if (result.Success)
+                return Ok(command);
+
+            return BadRequest(result.Errors);
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(DeleteBookCommand command)
+        {
+            var result = _deleteBookCommandHandler.Handle(command);
+
             if (result.Success)
                 return Ok(command);
 

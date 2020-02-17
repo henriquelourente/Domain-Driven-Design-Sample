@@ -1,26 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using SampleLibrary.Domain.Events;
 using SampleLibrary.Domain.Interfaces.Repositories;
 
 namespace SampleLibrary.Application.Book
 {
     public class BookQueries : IBookQueries
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IBookEventRepository _bookEventRepository;
 
-        public BookQueries(IBookRepository bookRepository)
+        public BookQueries(IBookEventRepository bookEventRepository)
         {
-            _bookRepository = bookRepository;
+            _bookEventRepository = bookEventRepository;
         }
 
-        public async Task<IEnumerable<Domain.Entities.Book>> GetAllAsync()
-        {
-            return await _bookRepository.GetAllAsync();
-        }
+        public async Task<IEnumerable<BookEvent>> GetAllAsync()  => await _bookEventRepository.GetAllAsync();
     }
 
     public interface IBookQueries
     {
-        Task<IEnumerable<Domain.Entities.Book>> GetAllAsync();
+        Task<IEnumerable<BookEvent>> GetAllAsync();
     }
 }
