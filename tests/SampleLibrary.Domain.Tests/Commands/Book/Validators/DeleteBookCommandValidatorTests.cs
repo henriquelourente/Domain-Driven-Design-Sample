@@ -30,11 +30,11 @@ namespace SampleLibrary.Domain.Tests.Commands.Book.Validators
         public void Book_Must_Exist(Domain.Entities.Book book, bool result)
         {
             //Assert
-            var deleteBookCommand = new DeleteBookCommand(_bookId);
-           
+            var deleteBookCommand = new DeleteBookCommand { Id = _bookId };
+
             var bookRepository = new Mock<IBookRepository>();
             bookRepository.Setup(r => r.GetById(_bookId)).Returns(book);
-            
+
             _deleteBookCommandValidator = new DeleteBookCommandValidator(bookRepository.Object);
 
             //Act
