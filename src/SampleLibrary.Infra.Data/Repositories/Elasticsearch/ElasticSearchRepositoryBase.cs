@@ -15,7 +15,7 @@ namespace SampleLibrary.Infra.Data.Repositories.Elasticsearch
          where TDocument : class, IMessage<TPrimaryKey>
          where TPrimaryKey : struct
     {
-        private readonly IElasticContextProvider _context;
+        protected readonly IElasticContextProvider _context;
         protected readonly string IndexName;
 
         protected ElasticSearchRepositoryBase(IElasticContextProvider context, string indexName)

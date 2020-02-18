@@ -31,11 +31,18 @@ namespace SampleLibrary.Api.Controllers
             return Ok(_bookQueries.GetAllAsync().Result);
         }
 
+        [HttpGet]
+        [Route("{text}")]
+        public IActionResult Get(string text)
+        {
+            return Ok(_bookQueries.GetByTextAsync(text).Result);
+        }
+
         [HttpPost]
         public IActionResult Post(CreateBookCommand command)
         {
             var result = _createBookCommandHandler.Handle(command);
-            
+
             if (result.Success)
                 return Ok(command);
 
@@ -45,8 +52,8 @@ namespace SampleLibrary.Api.Controllers
         [HttpPut]
         public IActionResult Put(UpdateBookCommand command)
         {
-            var result =_updateBookCommandHandler.Handle(command);
-          
+            var result = _updateBookCommandHandler.Handle(command);
+
             if (result.Success)
                 return Ok(command);
 

@@ -15,10 +15,16 @@ namespace SampleLibrary.Application.Book
         }
 
         public async Task<IEnumerable<BookEvent>> GetAllAsync()  => await _bookEventRepository.GetAllAsync();
+
+        public async Task<IEnumerable<BookEvent>> GetByTextAsync(string text)
+        {
+            return await _bookEventRepository.GetByTextAsync(text);
+        }
     }
 
     public interface IBookQueries
     {
         Task<IEnumerable<BookEvent>> GetAllAsync();
+        Task<IEnumerable<BookEvent>> GetByTextAsync(string text);
     }
 }
