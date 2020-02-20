@@ -11,7 +11,7 @@ Example of how to build applications with ASP.NET Core and DDD concepts.
 **Enviroment**
 
 - [RabbitMQ](https://hub.docker.com/_/rabbitmq)
-  - By default, application connect to http://localhost
+  - By default, application connect to http://localhost:5672
 - [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
   - Address configured on appsettings.json
 
