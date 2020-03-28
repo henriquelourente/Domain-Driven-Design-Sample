@@ -1,10 +1,10 @@
-# SampleLibrary
+# C# Domain-Driven Design Sample
 Example of how to build applications with ASP.NET Core and DDD concepts.
 
 ## How to use:
 
-- You will need the latest Visual Studio 2019 and the latest .NET Core SDK.
-- The latest SDK and tools can be downloaded from https://dot.net/core.
+- You will need Visual Studio 2019 and the current .NET Core SDK.
+- The current SDK and tools can be downloaded from https://dot.net/core.
 - You will need RabbitMQ message broker. 
 - You will need a Elasticsearch database.
 
