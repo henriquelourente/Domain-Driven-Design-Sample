@@ -5,7 +5,7 @@ using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
 namespace SampleLibrary.Domain.Entities
 {
-    public class Book : Entity, IAgregateRoot
+    public class Book : Entity
     {
         public string Title { get; private set; }
         public Guid AuthorId { get; private set; }

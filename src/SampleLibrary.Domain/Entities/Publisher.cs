@@ -3,7 +3,7 @@ using SampleLibrary.Core.Entity;
 
 namespace SampleLibrary.Domain.Entities
 {
-    public class Publisher : Entity, IAgregateRoot
+    public class Publisher : Entity
     {
         public Publisher(string name)
         {
