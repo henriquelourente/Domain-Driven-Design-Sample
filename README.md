@@ -26,6 +26,7 @@ Example of how to build applications with ASP.NET Core and DDD concepts.
 - XUnit
 - AutoMapper
 - FluentValidation 
+- Swagger
 
 ## Architecture:
 
