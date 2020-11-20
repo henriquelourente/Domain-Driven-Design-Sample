@@ -45,7 +45,7 @@ namespace SampleLibrary.Domain.Tests.Commands.Publisher.Validators
         {
             //Arrange
             var updatePublisherCommand = new UpdatePublisherCommand {Id = Guid.NewGuid(), Name = name};
-            _publisherRepositoryMock.Setup(a => a.Exists(name)).Returns(Task.FromResult(exists));
+            _publisherRepositoryMock.Setup(a => a.ExistsAsync(name)).Returns(Task.FromResult(exists));
 
             //Act
             var validationResults = _updatePublisherCommandValidator.Validate(updatePublisherCommand);

@@ -4,7 +4,6 @@ using Moq;
 using SampleLibrary.Domain.Commands.Book;
 using SampleLibrary.Domain.Commands.Book.Validators;
 using SampleLibrary.Domain.Interfaces.Repositories;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 using Xunit;
 
 namespace SampleLibrary.Domain.Tests.Commands.Book.Validators

@@ -26,7 +26,7 @@ namespace SampleLibrary.Domain.Tests.Commands.Author.Validators
         {
             //Arrange
             var createAuthorCommand = new CreateAuthorCommand {Name = name};
-            _authorRepositoryMock.Setup(a => a.Exists(name)).Returns(Task.FromResult(exists));
+            _authorRepositoryMock.Setup(a => a.ExistsAsync(name)).Returns(Task.FromResult(exists));
 
             //Act
             var validationResults = _createAuthorCommandValidator.Validate(createAuthorCommand);

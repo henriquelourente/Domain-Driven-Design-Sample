@@ -1,5 +1,7 @@
 ﻿using System;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SampleLibrary.Application.Author;
 using SampleLibrary.Application.Book;
@@ -28,8 +30,6 @@ namespace SampleLibrary.IoC
         public static void Register(this IServiceCollection services)
         {
             //data
-            services.AddTransient<SampleLibraryContext>();
-
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
@@ -73,6 +73,11 @@ namespace SampleLibrary.IoC
             //elasticsearch
             services.AddTransient<IElasticContextProvider, ElasticContextProvider>();
             services.AddTransient<IElasticConfigurationService, ElasticConfigurationService>();
+        }
+
+        public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<SampleLibraryContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
     }
 }

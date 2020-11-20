@@ -14,12 +14,12 @@ namespace SampleLibrary.Infra.Data.Repositories
         {
         }
 
-        public async Task<bool> Exists(string name)
+        public async Task<bool> ExistsAsync(string name)
         {
             return await _sampleLibraryContext.Author.AnyAsync(a => a.Name.Equals(name));
         }
 
-        public async Task<IEnumerable<Author>> GetAll()
+        public async Task<IEnumerable<Author>> GetAllAsync()
         {
             return await _sampleLibraryContext.Author.AsNoTracking().ToListAsync();
         }

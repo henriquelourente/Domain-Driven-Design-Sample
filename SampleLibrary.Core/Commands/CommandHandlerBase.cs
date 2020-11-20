@@ -15,7 +15,7 @@ namespace SampleLibrary.Core.Commands
             where T : CommandBase
             where TValidator : IValidator<T>
         {
-            ValidationResult validationResult = validator.Validate(command);
+            var validationResult = validator.Validate(command);
             Notifications = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
 
             return validationResult;

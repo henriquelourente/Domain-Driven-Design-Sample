@@ -17,7 +17,7 @@ namespace SampleLibrary.Domain.Commands.Publisher.Validators
         private void ValidateNameIsUnique()
         {
             RuleFor(publisherBaseCommand => publisherBaseCommand.Name)
-                .MustAsync(async (name, cancellationToken) => !(await _publisherRepository.Exists(name)))
+                .MustAsync(async (name, cancellationToken) => !(await _publisherRepository.ExistsAsync(name)))
                 .WithSeverity(Severity.Error)
                 .WithMessage("A publisher with this name already exists.");
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using SampleLibrary.Core.Entity;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities;
 using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
 namespace SampleLibrary.Domain.Entities
@@ -23,8 +22,7 @@ namespace SampleLibrary.Domain.Entities
         }
 
         protected Book()
-        {
-            
+        {            
         }
     }
 }

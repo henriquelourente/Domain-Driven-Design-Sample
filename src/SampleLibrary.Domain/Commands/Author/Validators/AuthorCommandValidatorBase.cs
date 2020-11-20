@@ -17,7 +17,7 @@ namespace SampleLibrary.Domain.Commands.Author.Validators
         private void ValidateNameIsUnique()
         {
             RuleFor(authorBaseCommand => authorBaseCommand.Name)
-                .MustAsync(async (name, cancellationToken) => !(await _authorRepository.Exists(name)))
+                .MustAsync(async (name, cancellationToken) => !(await _authorRepository.ExistsAsync(name)))
                 .WithSeverity(Severity.Error)
                 .WithMessage("A author with this name already exists.");
         }

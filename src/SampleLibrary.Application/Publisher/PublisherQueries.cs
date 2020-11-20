@@ -15,7 +15,7 @@ namespace SampleLibrary.Application.Publisher
 
         public async Task<IEnumerable<Domain.Entities.Publisher>> GetAllAsync()
         {
-            return await _publisherRepository.GetAll();
+            return await _publisherRepository.GetAllAsync();
         }
     }
 

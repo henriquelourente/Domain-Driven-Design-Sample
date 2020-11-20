@@ -22,6 +22,7 @@ namespace SampleLibrary.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext(Configuration);
             services.Register();
 
             var serviceProvider = services.BuildServiceProvider();

@@ -15,7 +15,7 @@ namespace SampleLibrary.Application.Author
 
         public async Task<IEnumerable<Domain.Entities.Author>> GetAllAsync()
         {
-            return await _authorRepository.GetAll();
+            return await _authorRepository.GetAllAsync();
         }
     }
 
