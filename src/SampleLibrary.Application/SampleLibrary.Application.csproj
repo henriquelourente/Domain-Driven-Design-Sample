@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
+      <ProjectReference Include="..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
       <ProjectReference Include="..\SampleLibrary.Domain\SampleLibrary.Domain.csproj" />
     </ItemGroup>
 

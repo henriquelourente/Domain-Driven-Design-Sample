@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SampleLibrary.Api\SampleLibrary.Api.csproj" />
+    <ProjectReference Include="..\..\src\SampleLibrary.Api\SampleLibrary.Api.csproj" />
   </ItemGroup>
 
 </Project>

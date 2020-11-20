@@ -11,6 +11,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
       <ProjectReference Include="..\SampleLibrary.Application\SampleLibrary.Application.csproj" />
+      <ProjectReference Include="..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
       <ProjectReference Include="..\SampleLibrary.Domain\SampleLibrary.Domain.csproj" />
       <ProjectReference Include="..\SampleLibrary.Infra.Data\SampleLibrary.Infra.Data.csproj" />
       <ProjectReference Include="..\SampleLibrary.Infra.Messaging\SampleLibrary.Infra.Messaging.csproj" />

@@ -9,11 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
+    <Folder Include="Entities\Validators" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Validators" />
+    <ProjectReference Include="..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
   </ItemGroup>
 
 </Project>

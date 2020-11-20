@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\SampleLibrary.IoC\SampleLibrary.IoC.csproj" />
+    <ProjectReference Include="..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
+    <ProjectReference Include="..\SampleLibrary.IoC\SampleLibrary.IoC.csproj" />
   </ItemGroup>
 
 </Project>
