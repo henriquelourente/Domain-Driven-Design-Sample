@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using SampleLibrary.Api;
 using SampleLibrary.Infra.Data.Context;
 using System;
 using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace SampleLibrary.Integration.Tests.Controllers
 {
@@ -32,7 +30,9 @@ namespace SampleLibrary.Integration.Tests.Controllers
 
             _serviceProvider = _webApplicationFactory.Services;
             _httpClient = _webApplicationFactory.CreateClient();
+            
             StartDatabase();
+            ResetDatabase();
         }
 
         public SampleLibraryContext GetContext()
@@ -43,7 +43,6 @@ namespace SampleLibrary.Integration.Tests.Controllers
         protected void StartDatabase()
         {
             var sampleLibraryContext = GetContext();
-            sampleLibraryContext.Database.EnsureDeleted();
             sampleLibraryContext.Database.Migrate();
         }
 
@@ -52,6 +51,14 @@ namespace SampleLibrary.Integration.Tests.Controllers
             var sampleLibraryContext = GetContext();
             sampleLibraryContext.AddRange(data);
             sampleLibraryContext.SaveChanges();
+        }
+
+        protected void ResetDatabase()
+        {
+            var sampleLibraryContext = GetContext();
+            sampleLibraryContext.Database.ExecuteSqlCommand("delete book");
+            sampleLibraryContext.Database.ExecuteSqlCommand("delete publisher");
+            sampleLibraryContext.Database.ExecuteSqlCommand("delete author");
         }
     }
 }
