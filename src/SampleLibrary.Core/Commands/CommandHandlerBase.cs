@@ -21,6 +21,6 @@ namespace SampleLibrary.Core.Commands
             return validationResult;
         }
 
-        public Result Return() => new Result {Errors = Notifications, Success = !Notifications.Any()};
+        public Result Return() => new Result (!Notifications.Any(), Notifications);
     }
 }

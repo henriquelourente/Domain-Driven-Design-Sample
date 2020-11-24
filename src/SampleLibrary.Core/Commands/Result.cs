@@ -4,7 +4,13 @@ namespace SampleLibrary.Core.Commands
 {
     public class Result
     {
-        public IEnumerable<string> Errors { get; set; }
-        public bool Success { get; set; }
+        public readonly IEnumerable<string> Errors;
+        public readonly bool Success;
+        
+        public Result(bool success, IEnumerable<string> errors)
+        {
+            Success = success;
+            Errors = errors;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using NUnit.Framework;
 using SampleLibrary.Domain.Commands.Publisher;
 using SampleLibrary.Domain.Entities;
 using SampleLibrary.Domain.Interfaces.Repositories;
@@ -7,24 +8,32 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using Xunit;
 
 namespace SampleLibrary.Integration.Tests.Controllers
 {
+    [TestFixture]
     public class PublisherControllerTests : ControllerBaseTests
     {
         private const string url = "api/publisher";
 
-        private readonly IPublisherRepository _publisherRepository;
+        private  IPublisherRepository _publisherRepository;
 
-        public PublisherControllerTests()
+        [OneTimeSetUp]
+        public void OneTimeSetup()
         {
             _publisherRepository = new PublisherRepository(GetContext());
         }
 
+        [SetUp]
+        public void SetUp()
+        {
+            StartDatabase();
+            ResetDatabase();
+        }
+
         [Theory]
-        [InlineData("Pearson", HttpStatusCode.OK, 1)]
-        [InlineData("", HttpStatusCode.BadRequest, 0)]
+        [TestCase("Pearson", HttpStatusCode.OK, 1)]
+        [TestCase("", HttpStatusCode.BadRequest, 0)]
         public void Must_Add_Valid_Publisher(string publisherName, HttpStatusCode httpStatusCode, int count)
         {
             //Arrange
@@ -38,7 +47,7 @@ namespace SampleLibrary.Integration.Tests.Controllers
             (_publisherRepository.GetAllAsync().Result).Count().Should().Be(count);
         }
 
-        [Fact]
+        [Test]
         public void Must_Update_Valid_Publisher()
         {
             //Arrange
@@ -56,7 +65,7 @@ namespace SampleLibrary.Integration.Tests.Controllers
             actual.Name.Should().Be(publisherName);
         }
 
-        [Fact]
+        [Test]
         public void Must_Not_Update_Invalid_Publisher()
         {
             //Arrange

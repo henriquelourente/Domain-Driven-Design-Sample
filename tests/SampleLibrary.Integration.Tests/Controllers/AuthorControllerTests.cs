@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using NUnit.Framework;
 using SampleLibrary.Domain.Commands.Author;
 using SampleLibrary.Domain.Entities;
 using SampleLibrary.Domain.Interfaces.Repositories;
@@ -7,8 +8,6 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace SampleLibrary.Integration.Tests.Controllers
 {
@@ -16,16 +15,24 @@ namespace SampleLibrary.Integration.Tests.Controllers
     {
         private const string url = "api/author";
 
-        private readonly IAuthorRepository _authorRepository;
+        private IAuthorRepository _authorRepository;
 
-        public AuthorControllerTests()
+        [OneTimeSetUp]
+        public void OneTimeSetup()
         {
             _authorRepository = new AuthorRepository(GetContext());
         }
 
+        [SetUp]
+        public void SetUp()
+        {
+            StartDatabase();
+            ResetDatabase();
+        }
+
         [Theory]
-        [InlineData("Robert C. Martin", HttpStatusCode.OK, 1)]
-        [InlineData("", HttpStatusCode.BadRequest, 0)]
+        [TestCase("Robert C. Martin", HttpStatusCode.OK, 1)]
+        [TestCase("", HttpStatusCode.BadRequest, 0)]
         public void Must_Add_Valid_Author(string authorName, HttpStatusCode httpStatusCode, int count)
         {
             //Arrange
@@ -39,7 +46,7 @@ namespace SampleLibrary.Integration.Tests.Controllers
             (_authorRepository.GetAllAsync().Result).Count().Should().Be(count);
         }
 
-        [Fact]
+        [Test]
         public void Must_Update_Valid_Author()
         {
             //Arrange
@@ -57,7 +64,7 @@ namespace SampleLibrary.Integration.Tests.Controllers
             actual.Name.Should().Be(authorName);
         }
 
-        [Fact]
+        [Test]
         public void Must_Not_Update_Invalid_Author()
         {
             //Arrange

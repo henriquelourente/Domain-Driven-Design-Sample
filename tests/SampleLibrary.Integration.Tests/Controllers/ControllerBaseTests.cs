@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using NUnit.Framework;
 using SampleLibrary.Api;
 using SampleLibrary.Infra.Data.Context;
 using System;
@@ -9,16 +10,15 @@ using System.Net.Http;
 
 namespace SampleLibrary.Integration.Tests.Controllers
 {
-    public class ControllerBaseTests
+    public abstract class ControllerBaseTests
     {
         protected readonly HttpClient _httpClient;
-        private readonly WebApplicationFactory<Startup> _webApplicationFactory;
         private readonly IServiceProvider _serviceProvider;
         private const string connectionString = "Data Source =.;database=SampleLibraryTests;Trusted_Connection=True;";
 
         public ControllerBaseTests()
         {
-            _webApplicationFactory = new WebApplicationFactory<Startup>().WithWebHostBuilder(builder =>
+            var _webApplicationFactory = new WebApplicationFactory<Startup>().WithWebHostBuilder(builder =>
             {
                 builder.ConfigureServices(services =>
                 {
@@ -30,9 +30,6 @@ namespace SampleLibrary.Integration.Tests.Controllers
 
             _serviceProvider = _webApplicationFactory.Services;
             _httpClient = _webApplicationFactory.CreateClient();
-            
-            StartDatabase();
-            ResetDatabase();
         }
 
         public SampleLibraryContext GetContext()
