@@ -3,7 +3,7 @@ Example of how to build applications with ASP.NET Core and DDD concepts.
 
 ## How to use:
 
-- You will need Visual Studio 2019 and the current .NET Core SDK.
+- You will need Visual Studio and the current .NET SDK.
 - The current SDK and tools can be downloaded from https://dot.net/core.
 - You will need RabbitMQ message broker. 
 - You will need a Elasticsearch database.
@@ -17,8 +17,7 @@ Example of how to build applications with ASP.NET Core and DDD concepts.
 
 ## Technologies implemented:
 
-- ASP.NET Core 3.1
-- Entity Framework Core 3.1
+- ASP.NET
 - .NET Core Native DI
 - Entity Framework Core (with SQL Server)
 - RabbitMQ ([EasyNetQ](https://easynetq.com/))
