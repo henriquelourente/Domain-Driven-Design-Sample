@@ -1,6 +1,5 @@
 ﻿using System;
 using FluentValidation;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
 
 namespace SampleLibrary.Domain.Commands.Book.Validators
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using SampleLibrary.Core.Entity;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
+using SampleLibrary.Domain.Entities.ValueObjects;
 
 namespace SampleLibrary.Domain.Entities
 {

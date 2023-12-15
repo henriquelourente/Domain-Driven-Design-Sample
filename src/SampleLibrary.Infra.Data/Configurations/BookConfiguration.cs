@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SampleLibrary.Domain.Entities;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
+using SampleLibrary.Domain.Entities.ValueObjects;
 
 namespace SampleLibrary.Infra.Data.Configurations
 {

@@ -1,4 +1,4 @@
-﻿namespace SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects
+﻿namespace SampleLibrary.Domain.Entities.ValueObjects
 {
     public class Publication
     {

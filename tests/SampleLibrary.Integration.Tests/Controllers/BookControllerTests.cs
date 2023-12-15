@@ -3,7 +3,7 @@ using NUnit.Framework;
 using SampleLibrary.Domain.Commands.Book;
 using SampleLibrary.Domain.Entities;
 using SampleLibrary.Domain.Interfaces.Repositories;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
+using SampleLibrary.Domain.Entities.ValueObjects;
 using SampleLibrary.Infra.Data.Repositories;
 using System;
 using System.Linq;

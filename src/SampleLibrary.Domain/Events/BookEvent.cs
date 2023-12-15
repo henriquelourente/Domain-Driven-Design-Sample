@@ -1,5 +1,5 @@
 ﻿using SampleLibrary.Core.Messages;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
+using SampleLibrary.Domain.Entities.ValueObjects;
 
 namespace SampleLibrary.Domain.Events
 {

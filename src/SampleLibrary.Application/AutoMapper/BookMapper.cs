@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SampleLibrary.Domain.Commands.Book;
 using SampleLibrary.Domain.Events;
-using SampleLibrary.Domain.Tests.Entities.Validators.Entities.ValueObjects;
+using SampleLibrary.Domain.Entities.ValueObjects;
 
 namespace SampleLibrary.Application.AutoMapper
 {

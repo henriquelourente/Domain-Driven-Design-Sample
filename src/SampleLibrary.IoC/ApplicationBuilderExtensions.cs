@@ -12,7 +12,7 @@ namespace SampleLibrary.IoC
         {
             _consumerSubscriptions = consumerSubscriptions;
 
-            var life = app.ApplicationServices.GetService<IApplicationLifetime>();
+            var life = app.ApplicationServices.GetService<IHostApplicationLifetime>();
 
             life.ApplicationStarted.Register(OnStarted);
             life.ApplicationStopping.Register(OnStopping);

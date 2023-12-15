@@ -1,19 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.6.1" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Entities\Validators" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
   </ItemGroup>
-
 </Project>

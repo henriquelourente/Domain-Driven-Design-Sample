@@ -1,18 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="EasyNetQ" Version="3.7.1" />
-      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
-      <ProjectReference Include="..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
-      <ProjectReference Include="..\SampleLibrary.Domain\SampleLibrary.Domain.csproj" />
-    </ItemGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EasyNetQ" Version="3.7.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SampleLibrary.Core\SampleLibrary.Core.csproj" />
+    <ProjectReference Include="..\SampleLibrary.Domain\SampleLibrary.Domain.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 using SampleLibrary.Api;
 using SampleLibrary.Infra.Data.Context;
 using System;
@@ -53,9 +52,9 @@ namespace SampleLibrary.Integration.Tests.Controllers
         protected void ResetDatabase()
         {
             var sampleLibraryContext = GetContext();
-            sampleLibraryContext.Database.ExecuteSqlCommand("delete book");
-            sampleLibraryContext.Database.ExecuteSqlCommand("delete publisher");
-            sampleLibraryContext.Database.ExecuteSqlCommand("delete author");
+            sampleLibraryContext.Database.ExecuteSqlRaw("delete book");
+            sampleLibraryContext.Database.ExecuteSqlRaw("delete publisher");
+            sampleLibraryContext.Database.ExecuteSqlRaw("delete author");
         }
     }
 }

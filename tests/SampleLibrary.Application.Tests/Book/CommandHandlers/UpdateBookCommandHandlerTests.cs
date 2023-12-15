@@ -57,7 +57,7 @@ namespace SampleLibrary.Application.Tests.Book.CommandHandlers
             var updateBookCommand = new UpdateBookCommand
             {
                 Title = "Clean Code", Publication = _publication, AuthorId = Guid.NewGuid(), PublisherId = Guid.NewGuid()
-            };
+            };               
 
             //Act
             _updateBookCommandHandler.Handle(updateBookCommand);
