@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using SampleLibrary.Application.AutoMapper;
+using FluentValidation;
+using SampleLibrary.Application.Mapping;
 using SampleLibrary.Core.Commands;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Author;
@@ -11,11 +11,13 @@ namespace SampleLibrary.Application.Author
     {
         private readonly IValidator<UpdateAuthorCommand> _createAuthorCommandValidator;
         private readonly IAuthorRepository _authorRepository;
-        
-        public UpdateAuthorCommandHandler(IValidator<UpdateAuthorCommand> validator, IAuthorRepository authorRepository)
+        private readonly AppForger _forger;
+
+        public UpdateAuthorCommandHandler(IValidator<UpdateAuthorCommand> validator, IAuthorRepository authorRepository, AppForger forger)
         {
             _createAuthorCommandValidator = validator;
             _authorRepository = authorRepository;
+            _forger = forger;
         }
 
         public Result Handle(UpdateAuthorCommand command)
@@ -24,7 +26,7 @@ namespace SampleLibrary.Application.Author
 
             if (validationResult.IsValid)
             {
-                var author = Mapper<Domain.Entities.Author, UpdateAuthorCommand>.CommandToEntity(command);
+                var author = _forger.Forge(command);
                 _authorRepository.Update(author);
                 _authorRepository.SaveChanges();
             }

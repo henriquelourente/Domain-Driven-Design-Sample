@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using SampleLibrary.Application.AutoMapper;
+using FluentValidation;
+using SampleLibrary.Application.Mapping;
 using SampleLibrary.Core.Commands;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Publisher;
@@ -11,12 +11,15 @@ namespace SampleLibrary.Application.Publisher
     {
         private readonly IValidator<UpdatePublisherCommand> _updatePublisherCommandValidator;
         private readonly IPublisherRepository _publisherRepository;
+        private readonly AppForger _forger;
 
         public UpdatePublisherCommandHandler(IValidator<UpdatePublisherCommand> validator,
-            IPublisherRepository publisherRepository)
+            IPublisherRepository publisherRepository,
+            AppForger forger)
         {
             _updatePublisherCommandValidator = validator;
             _publisherRepository = publisherRepository;
+            _forger = forger;
         }
 
         public Result Handle(UpdatePublisherCommand command)
@@ -25,7 +28,7 @@ namespace SampleLibrary.Application.Publisher
 
             if (validationResult.IsValid)
             {
-                var publisher = Mapper<Domain.Entities.Publisher, UpdatePublisherCommand>.CommandToEntity(command);
+                var publisher = _forger.Forge(command);
                 _publisherRepository.Update(publisher);
                 _publisherRepository.SaveChanges();
             }

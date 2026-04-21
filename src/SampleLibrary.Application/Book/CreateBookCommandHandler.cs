@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using SampleLibrary.Application.AutoMapper;
+using FluentValidation;
+using SampleLibrary.Application.Mapping;
 using SampleLibrary.Core.Commands;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Book;
@@ -13,14 +13,17 @@ namespace SampleLibrary.Application.Book
         private readonly IValidator<CreateBookCommand> _createBookCommandValidaor;
         private readonly IBookRepository _bookRepository;
         private readonly IEventPublisher<BookEvent> _eventPublisher;
+        private readonly AppForger _forger;
 
         public CreateBookCommandHandler(IValidator<CreateBookCommand> bookCommandValidaor,
             IBookRepository bookRepository,
-            IEventPublisher<BookEvent> eventPublisher)
+            IEventPublisher<BookEvent> eventPublisher,
+            AppForger forger)
         {
             _createBookCommandValidaor = bookCommandValidaor;
             _bookRepository = bookRepository;
             _eventPublisher = eventPublisher;
+            _forger = forger;
         }
 
         public Result Handle(CreateBookCommand command)
@@ -29,12 +32,12 @@ namespace SampleLibrary.Application.Book
 
             if (validationResult.IsValid)
             {
-                var book = BookMapper.CommandToEntity(command);
+                var book = _forger.Forge(command);
                 _bookRepository.Add(book);
                 _bookRepository.SaveChanges();
 
                 var newBook = _bookRepository.GetById(book.Id);
-                _eventPublisher.Publish(BookMapper.EntityToEvent(newBook));
+                _eventPublisher.Publish(_forger.Forge(newBook));
             }
 
             return Return();

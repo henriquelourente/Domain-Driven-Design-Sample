@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentValidation;
 using Moq;
+using SampleLibrary.Application.Mapping;
 using SampleLibrary.Application.Publisher;
 using SampleLibrary.Domain.Commands.Publisher;
 using SampleLibrary.Domain.Commands.Publisher.Validators;
@@ -21,7 +22,7 @@ namespace SampleLibrary.Application.Tests.Publisher.CommandHandlers
                 new UpdatePublisherCommandValidator(_publisherRepository.Object);
 
             _updatePublisherCommandHandler =
-                new UpdatePublisherCommandHandler(updatePublisherCommandValidator, _publisherRepository.Object);
+                new UpdatePublisherCommandHandler(updatePublisherCommandValidator, _publisherRepository.Object, new AppForger());
         }
 
         [Fact]
