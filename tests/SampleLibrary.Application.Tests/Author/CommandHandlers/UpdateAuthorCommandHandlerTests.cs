@@ -2,6 +2,7 @@
 using FluentValidation;
 using Moq;
 using SampleLibrary.Application.Author;
+using SampleLibrary.Application.Mapping;
 using SampleLibrary.Domain.Commands.Author;
 using SampleLibrary.Domain.Commands.Author.Validators;
 using SampleLibrary.Domain.Interfaces.Repositories;
@@ -21,7 +22,7 @@ namespace SampleLibrary.Application.Tests.Author.CommandHandlers
                 new UpdateAuthorCommandValidator(_authorRepository.Object);
 
             _updateAuthorCommandHandler =
-                new UpdateAuthorCommandHandler(updateAuthorCommandValidator, _authorRepository.Object);
+                new UpdateAuthorCommandHandler(updateAuthorCommandValidator, _authorRepository.Object, new AppForger());
         }
 
         [Fact]

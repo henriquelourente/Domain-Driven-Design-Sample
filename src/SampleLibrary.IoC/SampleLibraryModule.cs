@@ -29,6 +29,9 @@ namespace SampleLibrary.IoC
     {
         public static void Register(this IServiceCollection services)
         {
+            //mapping
+            services.AddForgeMaps();
+
             //data
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IPublisherRepository, PublisherRepository>();

@@ -1,6 +1,7 @@
 ﻿using System;
 using Moq;
 using SampleLibrary.Application.Book;
+using SampleLibrary.Application.Mapping;
 using SampleLibrary.Core.Interfaces;
 using SampleLibrary.Domain.Commands.Book;
 using SampleLibrary.Domain.Commands.Book.Validators;
@@ -29,7 +30,7 @@ namespace SampleLibrary.Application.Tests.Book.CommandHandlers
             _eventPublisher = new Mock<IEventPublisher<BookEvent>>();
 
             _createBookCommandHandler =
-                new CreateBookCommandHandler(createBookCommandValidator, _bookRepository.Object, _eventPublisher.Object);
+                new CreateBookCommandHandler(createBookCommandValidator, _bookRepository.Object, _eventPublisher.Object, new AppForger());
         }
 
         [Fact]
